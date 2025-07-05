@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oasis - Legendary Britpop Band</title>
+    <style>
+        /* ===== IMPORT FONTS ===== */
+        @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap');
+
+        /* ===== RESET & BASE STYLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-dark: #0a0a0a;
+            --secondary-dark: #1a1a1a;
+            --accent-dark: #2d2d2d;
+            --text-primary: #ffffff;
+            --text-secondary: #b8b8b8;
+            --accent-blue: #64ffda;
+            --accent-orange: #ff6b35;
+            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-dark: linear-gradient(135deg, #232526 0%, #414345 100%);
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: var(--primary-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* ===== BACKGROUND PATTERN ===== */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 107, 53, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(100, 255, 218, 0.05) 0%, transparent 50%);
+            z-index: -1;
+        }
+
+        /* ===== HEADER SECTION ===== */
+        .hero-section {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            background: var(--gradient-dark);
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="0.5" fill="rgba(255,255,255,0.03)"/><circle cx="25" cy="25" r="0.3" fill="rgba(255,255,255,0.02)"/><circle cx="75" cy="75" r="0.4" fill="rgba(255,255,255,0.025)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+            z-index: 1;
+        }
+
+        .hero-content {
+            z-index: 2;
+            position: relative;
+        }
+
+        .band-logo {
+            font-family: 'Oswald', sans-serif;
+            font-size: 8rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-shadow: 
+                0 0 20px rgba(100, 255, 218, 0.5),
+                0 0 40px rgba(100, 255, 218, 0.3),
+                0 0 60px rgba(100, 255, 218, 0.1);
+            margin-bottom: 1rem;
+            letter-spacing: 0.1em;
+            animation: glow-pulse 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow-pulse {
+            from { 
+                text-shadow: 
+                    0 0 20px rgba(100, 255, 218, 0.5),
+                    0 0 40px rgba(100, 255, 218, 0.3),
+                    0 0 60px rgba(100, 255, 218, 0.1);
+            }
+            to { 
+                text-shadow: 
+                    0 0 30px rgba(100, 255, 218, 0.8),
+                    0 0 60px rgba(100, 255, 218, 0.5),
+                    0 0 90px rgba(100, 255, 218, 0.3);
+            }
+        }
+
+        .hero-subtitle {
+            font-size: 1.8rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .reunion-banner {
+            background: var(--gradient-primary);
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            animation: pulse 2s infinite;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* ===== MAIN CONTAINER ===== */
+        .main-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* ===== SECTION STYLES ===== */
+        .section {
+            margin: 100px 0;
+            padding: 60px 0;
+        }
+
+        .section-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 3.5rem;
+            color: var(--accent-blue);
+            margin-bottom: 50px;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: var(--gradient-primary);
+            margin: 20px auto;
+            border-radius: 2px;
+        }
+
+        /* ===== ABOUT SECTION ===== */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+        }
+
+        .about-stats {
+            background: var(--secondary-dark);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid var(--accent-dark);
+        }
+
+        .stat-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--accent-dark);
+        }
+
+        .stat-item:last-child {
+            border-bottom: none;
+        }
+
+        .stat-label {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .stat-value {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--accent-blue);
+        }
+
+        /* ===== MEMBERS SECTION ===== */
+        .members-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .member-card {
+            background: var(--secondary-dark);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            border: 1px solid var(--accent-dark);
+            position: relative;
+        }
+
+        .member-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            border-color: var(--accent-blue);
+        }
+
+        .member-photo {
+            width: 100%;
+            height: 300px;
+            background: var(--gradient-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .member-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .member-card:hover .member-photo img {
+            transform: scale(1.1);
+        }
+
+        .member-info {
+            padding: 30px;
+        }
+
+        .member-name {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            margin-bottom: 5px;
+        }
+
+        .member-role {
+            color: var(--accent-blue);
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+        }
+
+        .member-bio {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* ===== ALBUMS SECTION ===== */
+        .albums-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .album-card {
+            background: var(--secondary-dark);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            border: 1px solid var(--accent-dark);
+            position: relative;
+        }
+
+        .album-card:hover {
+            transform: scale(1.05) rotate(2deg);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+        }
+
+        .album-cover {
+            width: 100%;
+            height: 250px;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            position: relative;
+        }
+
+        .album-cover::before {
+            content: '♪';
+            font-size: 4rem;
+            opacity: 0.3;
+        }
+
+        .album-info {
+            padding: 20px;
+        }
+
+        .album-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.3rem;
+            color: var(--text-primary);
+            margin-bottom: 5px;
+        }
+
+        .album-year {
+            color: var(--accent-blue);
+            font-weight: 600;
+        }
+
+        .album-description {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-top: 10px;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+
+        .album-card:hover .album-description {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== GALLERY SECTION ===== */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 60px;
+        }
+
+        .gallery-item {
+            height: 250px;
+            background: var(--secondary-dark);
+            border-radius: 15px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            border: 1px solid var(--accent-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            position: relative;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* ===== SCROLL INDICATORS ===== */
+        .scroll-indicator {
+            position: fixed;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 100;
+        }
+
+        .scroll-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--accent-dark);
+            margin: 15px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .scroll-dot.active {
+            background: var(--accent-blue);
+            transform: scale(1.3);
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--secondary-dark);
+            padding: 60px 0;
+            text-align: center;
+            border-top: 1px solid var(--accent-dark);
+            margin-top: 100px;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .footer-text {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .footer-link {
+            color: var(--accent-blue);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--text-primary);
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 1200px) {
+            .band-logo {
+                font-size: 6rem;
+            }
+            
+            .main-container {
+                padding: 0 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .band-logo {
+                font-size: 4rem;
+            }
+            
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .members-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .scroll-indicator {
+                display: none;
+            }
+        }
+
+        /* ===== LOADING ANIMATION ===== */
+        .fade-in {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== CUSTOM SCROLLBAR ===== */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--primary-dark);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent-blue);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-orange);
+        }
+    </style>
+</head>
+<body>
+    <!-- ===== HERO SECTION ===== -->
+    <section class="hero-section" id="hero">
+        <div class="hero-content">
+            <h1 class="band-logo">OASIS</h1>
+            <p class="hero-subtitle">Legendary Britpop Icons</p>
+            <div class="reunion-banner">🎸 REUNION TOUR 2025 🎸</div>
+        </div>
+    </section>
+
+    <div class="main-container">
+        <!-- ===== ABOUT SECTION ===== -->
+        <section class="section fade-in" id="about">
+            <h2 class="section-title">Tentang Band</h2>
+            <div class="about-grid">
+                <div class="about-text">
+                    <p>
+                        Oasis adalah band rock Inggris yang dibentuk di Manchester pada tahun 1991. 
+                        Dipimpin oleh kakak beradik Liam dan Noel Gallagher, mereka menjadi salah satu 
+                        band paling berpengaruh dalam era Britpop tahun 1990-an.
+                    </p>
+                    <p>
+                        Dengan sikap yang percaya diri dan lagu-lagu anthem yang tak terlupakan, 
+                        Oasis berhasil menaklukkan dunia musik internasional. Hits seperti "Wonderwall", 
+                        "Don't Look Back in Anger", dan "Champagne Supernova" telah menjadi soundtrack 
+                        generasi dan terus didengarkan hingga kini.
+                    </p>
+                    <p>
+                        Setelah 15 tahun berpisah, pada tahun 2024 Liam dan Noel Gallagher akhirnya 
+                        mengumumkan reuni Oasis untuk tour dunia tahun 2025, membuat fans di seluruh 
+                        dunia bergembira.
+                    </p>
+                </div>
+                <div class="about-stats">
+                    <div class="stat-item">
+                        <span class="stat-label">Album Terjual</span>
+                        <span class="stat-value">75+ Juta</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Tahun Aktif</span>
+                        <span class="stat-value">1991-2009</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Studio Albums</span>
+                        <span class="stat-value">7</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Asal</span>
+                        <span class="stat-value">Manchester, UK</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Reunion Tour</span>
+                        <span class="stat-value">2025</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== MEMBERS SECTION ===== -->
+        <section class="section fade-in" id="members">
+            <h2 class="section-title">Anggota Band</h2>
+            <div class="members-grid">
+                <div class="member-card" onclick="showMemberDetails('Liam Gallagher')">
+                    <div class="member-photo">
+                        <!-- Insert photo here - Foto Liam Gallagher -->
+                        <img src="images/liam.jpg" alt="Liam Gallagher" style="display: none;">
+                        <span>Foto Liam Gallagher</span>
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Liam Gallagher</h3>
+                        <p class="member-role">Vokal Utama</p>
+                        <p class="member-bio">
+                            Vokalis utama Oasis yang terkenal dengan suara khas dan sikap rock star yang ikonik. 
+                            Dikenal dengan gaya bernyanyi yang kuat dan karisma panggung yang memukau.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="member-card" onclick="showMemberDetails('Noel Gallagher')">
+                    <div class="member-photo">
+                        <!-- Insert photo here - Foto Noel Gallagher -->
+                        <img src="images/noel.jpg" alt="Noel Gallagher" style="display: none;">
+                        <span>Foto Noel Gallagher</span>
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Noel Gallagher</h3>
+                        <p class="member-role">Gitar Utama, Vokal</p>
+                        <p class="member-bio">
+                            Mastermind di balik kesuksesan Oasis. Penulis lagu utama yang menciptakan hits terbesar band. 
+                            Gitaris berbakat dan produser yang visioner.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="member-card" onclick="showMemberDetails('Paul Arthurs')">
+                    <div class="member-photo">
+                        <!-- Insert photo here - Foto Paul "Bonehead" Arthurs -->
+                        <img src="images/bonehead.jpg" alt="Paul Bonehead Arthurs" style="display: none;">
+                        <span>Foto Paul "Bonehead" Arthurs</span>
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Paul "Bonehead" Arthurs</h3>
+                        <p class="member-role">Gitar Ritme</p>
+                        <p class="member-bio">
+                            Salah satu anggota pendiri Oasis. Gitaris ritme yang memberikan fondasi kuat untuk sound band. 
+                            Akan kembali untuk reunion tour 2025.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="member-card" onclick="showMemberDetails('Andy Bell')">
+                    <div class="member-photo">
+                        <!-- Insert photo here - Foto Andy Bell -->
+                        <img src="images/andy.jpg" alt="Andy Bell" style="display: none;">
+                        <span>Foto Andy Bell</span>
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Andy Bell</h3>
+                        <p class="member-role">Bass</p>
+                        <p class="member-bio">
+                            Bassist yang bergabung dengan Oasis pada tahun 1999. Sebelumnya adalah anggota band Ride. 
+                            Memberikan groove yang solid untuk lagu-lagu Oasis.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="member-card" onclick="showMemberDetails('Gem Archer')">
+                    <div class="member-photo">
+                        <!-- Insert photo here - Foto Gem Archer -->
+                        <img src="images/gem.jpg" alt="Gem Archer" style="display: none;">
+                        <span>Foto Gem Archer</span>
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Gem Archer</h3>
+                        <p class="member-role">Gitar, Keyboard</p>
+                        <p class="member-bio">
+                            Multi-instrumentalis berbakat yang bergabung pada tahun 1999. 
+                            Menambah dimensi baru pada sound Oasis dengan kemampuan gitar dan keyboard.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="member-card" onclick="showMemberDetails('Joey Waronker')">
+                    <div class="member-photo">
+                        <!-- Insert photo here - Foto Joey Waronker -->
+                        <img src="images/joey.jpg" alt="Joey Waronker" style="display: none;">
+                        <span>Foto Joey Waronker</span>
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Joey Waronker</h3>
+                        <p class="member-role">Drum</p>
+                        <p class="member-bio">
+                            Drummer berpengalaman yang akan bergabung untuk reunion tour 2025. 
+                            Dikenal dengan teknik yang solid dan pengalaman dengan berbagai artis top.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== ALBUMS SECTION ===== -->
+        <section class="section fade-in" id="albums">
+            <h2 class="section-title">Diskografi</h2>
+            <div class="albums-grid">
+                <div class="album-card" onclick="showAlbumDetails('Definitely Maybe', '1994')">
+                    <div class="album-cover">
+                        <div>Definitely Maybe</div>
+                    </div>
+                    <div class="album-info">
+                        <h3 class="album-title">Definitely Maybe</h3>
+                        <p class="album-year">1994</p>
+                        <p class="album-description">
+                            Album debut yang menggebrak dunia musik dengan hits "Live Forever" dan "Rock 'n' Roll Star".
+                        </p>
+                    </div>
+                </div>
+
+                <div class="album-card" onclick="showAlbumDetails('(What\'s the Story) Morning Glory?', '1995')">
+                    <div class="album-cover">
+                        <div>Morning Glory?</div>
+                    </div>
+                    <div class="album-info">
+                        <h3 class="album-title">(What's the Story) Morning Glory?</h3>
+                        <p class="album-year">1995</p>
+                        <p class="album-description">
+                            Masterpiece yang berisi "Wonderwall" dan "Don't Look Back in Anger".
+                        </p>
+                    </div>
+                </div>
+
+                <div class="album-card" onclick="showAlbumDetails('Be Here Now', '1997')">
+                    <div class="album-cover">
+                        <div>Be Here Now</div>
+                    </div>
+                    <div class="album-info">
+                        <h3 class="album-title">Be Here Now</h3>
+                        <p class="album-year">1997</p>
+                        <p class="album-description">
+                            Album dengan penjualan tercepat dalam sejarah musik Inggris saat dirilis.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="album-card" onclick="showAlbumDetails('Standing on the Shoulder of Giants', '2000')">
+                    <div class="album-cover">
+                        <div>Standing on the Shoulder of Giants</div>
+                    </div>
+                    <div class="album-info">
+                        <h3 class="album-title">Standing on the Shoulder of Giants</h3>
+                        <p class="album-year">2000</p>
+                        <p class="album-description">
+                            Era baru Oasis dengan formasi anggota yang berubah.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="album-card" onclick="showAlbumDetails('Heathen Chemistry', '2002')">
+                    <div class="album-cover">
+                        <div>Heathen Chemistry</div>
+                    </div>
+                    <div class="album-info">
+                        <h3 class="album-title">Heathen Chemistry</h3>
+                        <p class="album-year">2002</p>
+                        <p class="album-description">
+                            Menandai kembalinya kolaborasi songwriting dalam band.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="album-card" onclick="showAlbumDetails('Dig Out Your Soul', '2008')">
+                    <div class="album-cover">
+                        <div>Dig Out Your Soul</div>
+                    </div>
+                    <div class="album-info">
+                        <h3 class="album-title">Dig Out Your Soul</h3>
+                        <p class="album-year">2008</p>
+                        <p class="album-description">
+                            Album studio terakhir Oasis sebelum bubar pada tahun 2009.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== GALLERY SECTION ===== -->
+        <section class="section fade-in" id="gallery">
+            <h2 class="section-title">Galeri Foto</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item" onclick="expandImage(this)">
+                    <!-- Insert photo here - Foto Band Performance -->
+                    <img src="images/live.jpg" alt="Oasis Live Performance" style="display: none;">
+                    <span>🎸 Live Performance</span>
+                </div>
+
+                <div class="gallery-item" onclick="expandImage(this)">
+                    <!-- Insert photo here - Foto Studio Recording -->
+                    <img src="images/studio.jpg" alt="Studio Recording Session" style="display: none;">
+                    <span>🎵 Studio Session</span>
+                </div>
+
+                <div class="gallery-item" onclick="expandImage(this)">
+                    <!-- Insert photo here - Foto Band Portrait -->
+                    <img src="images/potrait.jpg" alt="Band Portrait" style="display: none;">
+                    <span>📸 Band Portrait</span>
+                </div>
+
+                <div class="gallery-item" onclick="expandImage(this)">
+                    <!-- Insert photo here - Foto Backstage -->
+                    <img src="images/backstage.jpg" alt="Backstage Moments" style="display: none;">
+                    <span>🎭 Backstage</span>
+                </div>
+
+                <div class="gallery-item" onclick="expandImage(this)">
+                    <!-- Insert photo here - Foto Crowd Concert -->
+                    <img src="images/crowd.jpg" alt="Concert Crowd" style="display: none;">
+                    <span>🎊 Concert Crowd</span>
+                </div>
+
+                <div class="gallery-item" onclick="expandImage(this)">
+                    <!-- Insert photo here - Foto Vintage -->
+                    <img src="images/vintage.jpg" alt="Vintage Photo" style="display: none;">
+                    <span>📼 Vintage Era</span>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ===== SCROLL INDICATOR ===== -->
+    <div class="scroll-indicator">
+        <div class="scroll-dot active" data-section="hero"></div>
+        <div class="scroll-dot" data-section="about"></div>
+        <div class="scroll-dot" data-section="members"></div>
+        <div class="scroll-dot" data-section="albums"></div>
+        <div class="scroll-dot" data-section="gallery"></div>
+    </div>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="footer-text">
+                "Don't look back in anger, I heard you say" - Oasis akan kembali pada 2025!
+            </p>
+            <div class="footer-links">
+            </div>
+            <p style="margin-top: 30px; color: var(--text-secondary); font-size: 0.9rem;">
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // ===== JAVASCRIPT UNTUK INTERAKTIVITAS ===== 
+
+        /**
+         * Database informasi member untuk popup detail
+         */
+        const membersDatabase = {
+            'Liam Gallagher': {
+                fullName: 'William John Paul Gallagher',
+                birthDate: '21 September 1972',
+                birthPlace: 'Manchester, England',
+                role: 'Lead Vocals, Tambourine',
+                description: 'Liam Gallagher adalah vokalis karismatik Oasis yang terkenal dengan suara nasal khasnya dan sikap rock star yang arogan namun memukau. Dikenal dengan gaya berpakaian mod dan sikap panggung yang ikonik, Liam menjadi simbol generasi Britpop. Setelah Oasis bubar, ia melanjutkan karir dengan Beady Eye dan kemudian solo career yang sukses.',
+                funFact: 'Liam tidak pernah belajar bermain gitar dengan serius, lebih fokus pada vokal dan image sebagai frontman.'
+            },
+            'Noel Gallagher': {
+                fullName: 'Noel Thomas David Gallagher',
+                birthDate: '29 Mei 1967',
+                birthPlace: 'Manchester, England', 
+                role: 'Lead Guitar, Vocals, Songwriter',
+                description: 'Noel Gallagher adalah otak kreatif di balik Oasis. Sebagai penulis lagu utama, ia menciptakan hampir semua hits terbesar band termasuk "Wonderwall", "Don\'t Look Back in Anger", dan "Champagne Supernova". Gitaris berbakat dan produser yang memiliki ear untuk melodi yang sempurna.',
+                funFact: 'Noel menulis "Live Forever" sebagai respons terhadap lagu "I Hate Myself and Want to Die" dari Nirvana.'
+            },
+            'Paul Arthurs': {
+                fullName: 'Paul Benjamin Arthurs',
+                birthDate: '23 Juni 1965',
+                birthPlace: 'Manchester, England',
+                role: 'Rhythm Guitar (1991-1999, 2025)',
+                description: 'Paul "Bonehead" Arthurs adalah salah satu anggota pendiri Oasis. Gitaris ritme yang memberikan fondasi solid untuk sound band. Meskipun meninggalkan band pada 1999, ia tetap dekat dengan anggota lain dan akan kembali untuk reunion tour 2025.',
+                funFact: 'Bonehead mendapat julukannya karena potongan rambut buzz cut yang ia pertahankan selama bertahun-tahun.'
+            },
+            'Andy Bell': {
+                fullName: 'Andrew Piran Bell',
+                birthDate: '11 Agustus 1970', 
+                birthPlace: 'Cardiff, Wales',
+                role: 'Bass Guitar (1999-2009, 2025)',
+                description: 'Andy Bell bergabung dengan Oasis pada 1999 setelah meninggalkan band shoegazer Ride. Bassist yang solid dan juga gitaris berbakat, ia memberikan stabilitas musikal yang dibutuhkan band pada era akhir mereka.',
+                funFact: 'Andy adalah satu-satunya anggota Oasis yang berasal dari Wales, bukan Manchester.'
+            },
+            'Gem Archer': {
+                fullName: 'Colin Murray Archer',
+                birthDate: '7 Desember 1966',
+                birthPlace: 'Hunwick, England',
+                role: 'Guitar, Keyboards (1999-2009, 2025)',
+                description: 'Gem Archer adalah multi-instrumentalis yang bergabung bersamaan dengan Andy Bell pada 1999. Sebelumnya ia bermain untuk band The Stone Roses dan Heavy Stereo. Kemampuannya bermain gitar dan keyboard menambah dimensi baru pada sound Oasis.',
+                funFact: 'Gem pernah menjadi roadie untuk Oasis sebelum akhirnya bergabung sebagai anggota band.'
+            },
+            'Joey Waronker': {
+                fullName: 'Joseph Waronker',
+                birthDate: '20 September 1969',
+                birthPlace: 'Los Angeles, USA', 
+                role: 'Drums (2025)',
+                description: 'Joey Waronker adalah drummer session berpengalaman yang akan bergabung untuk reunion tour 2025. Ia telah bekerja dengan berbagai artis ternama seperti Beck, R.E.M., dan Atoms for Peace. Pengalaman dan skill drumming-nya yang luas membuatnya menjadi pilihan ideal untuk tour comeback.',
+                funFact: 'Joey adalah anak dari produser musik terkenal Lenny Waronker, mantan presiden Warner Bros. Records.'
+            }
+        };
+
+        /**
+         * Database informasi album untuk popup detail
+         */
+        const albumsDatabase = {
+            'Definitely Maybe': {
+                year: '1994',
+                producer: 'Noel Gallagher, Mark Coyle',
+                recordedAt: 'Sawmills Studios, Cornwall',
+                hitSongs: ['Live Forever', 'Rock \'n\' Roll Star', 'Supersonic', 'Bring It On Down'],
+                description: 'Album debut yang menggebrak dunia musik dan menjadi album debut dengan penjualan tercepat di UK saat itu. Berisi energi raw dan attitude yang akan mendefinisikan Oasis.',
+                trivia: 'Album ini direkam hanya dalam 2 minggu dan langsung menjadi fenomena budaya.'
+            },
+            '(What\'s the Story) Morning Glory?': {
+                year: '1995', 
+                producer: 'Owen Morris, Noel Gallagher',
+                recordedAt: 'Rockfield Studios, Wales',
+                hitSongs: ['Wonderwall', 'Don\'t Look Back in Anger', 'Champagne Supernova', 'Roll with It'],
+                description: 'Masterpiece Oasis yang berisi beberapa lagu terbesar dalam sejarah musik rock. Album ini membuktikan bahwa mereka bisa melampaui kesuksesan debut.',
+                trivia: 'Wonderwall menjadi lagu paling populer dan sering di-cover dalam sejarah musik Britpop.'
+            },
+            'Be Here Now': {
+                year: '1997',
+                producer: 'Owen Morris, Noel Gallagher', 
+                recordedAt: 'Ridge Farm Studios, Abbey Road Studios',
+                hitSongs: ['D\'You Know What I Mean?', 'Stand by Me', 'All Around the World'],
+                description: 'Album ambisius dengan produksi maksimal yang menjadi album dengan penjualan tercepat dalam sejarah musik Inggris saat dirilis.',
+                trivia: 'Album ini direkam dalam suasana hype besar-besaran dan ekspektasi yang sangat tinggi dari media dan fans.'
+            }
+        };
+
+        /**
+         * Menampilkan detail member dalam popup
+         */
+        function showMemberDetails(memberName) {
+            const member = membersDatabase[memberName];
+            if (member) {
+                const popup = `
+                    <div style="
+                        position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+                        background: rgba(0,0,0,0.9); z-index: 1000; 
+                        display: flex; align-items: center; justify-content: center;
+                        backdrop-filter: blur(10px);
+                    " onclick="this.remove()">
+                        <div style="
+                            background: var(--secondary-dark); 
+                            padding: 40px; border-radius: 20px; 
+                            max-width: 500px; border: 1px solid var(--accent-blue);
+                            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+                        " onclick="event.stopPropagation()">
+                            <h2 style="color: var(--accent-blue); margin-bottom: 10px; font-family: 'Oswald', sans-serif;">
+                                ${member.fullName}
+                            </h2>
+                            <p style="color: var(--text-secondary); margin-bottom: 20px;">
+                                <strong>Lahir:</strong> ${member.birthDate}, ${member.birthPlace}<br>
+                                <strong>Peran:</strong> ${member.role}
+                            </p>
+                            <p style="color: var(--text-primary); line-height: 1.6; margin-bottom: 20px;">
+                                ${member.description}
+                            </p>
+                            <div style="
+                                background: var(--gradient-primary); padding: 15px; 
+                                border-radius: 10px; margin-bottom: 20px;
+                            ">
+                                <strong>Fun Fact:</strong> ${member.funFact}
+                            </div>
+                            <button onclick="this.parentElement.parentElement.remove()" style="
+                                background: var(--accent-blue); color: var(--primary-dark); 
+                                border: none; padding: 10px 20px; border-radius: 25px; 
+                                cursor: pointer; font-weight: bold;
+                            ">Tutup</button>
+                        </div>
+                    </div>
+                `;
+                document.body.insertAdjacentHTML('beforeend', popup);
+            }
+        }
+
+        /**
+         * Menampilkan detail album dalam popup
+         */
+        function showAlbumDetails(albumTitle, year) {
+            const album = albumsDatabase[albumTitle] || {
+                year: year,
+                description: `Album ${albumTitle} dirilis pada tahun ${year} dan menjadi bagian penting dari diskografi Oasis.`,
+                hitSongs: ['Track listing not available'],
+                trivia: 'Detail lengkap akan segera ditambahkan.'
+            };
+
+            const popup = `
+                <div style="
+                    position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+                    background: rgba(0,0,0,0.9); z-index: 1000; 
+                    display: flex; align-items: center; justify-content: center;
+                    backdrop-filter: blur(10px);
+                " onclick="this.remove()">
+                    <div style="
+                        background: var(--secondary-dark); 
+                        padding: 40px; border-radius: 20px; 
+                        max-width: 600px; border: 1px solid var(--accent-orange);
+                        box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+                    " onclick="event.stopPropagation()">
+                        <h2 style="color: var(--accent-orange); margin-bottom: 10px; font-family: 'Oswald', sans-serif;">
+                            ${albumTitle}
+                        </h2>
+                        <p style="color: var(--text-secondary); margin-bottom: 20px;">
+                            <strong>Tahun:</strong> ${album.year}
+                            ${album.producer ? `<br><strong>Produser:</strong> ${album.producer}` : ''}
+                            ${album.recordedAt ? `<br><strong>Direkam di:</strong> ${album.recordedAt}` : ''}
+                        </p>
+                        <p style="color: var(--text-primary); line-height: 1.6; margin-bottom: 20px;">
+                            ${album.description}
+                        </p>
+                        <div style="margin-bottom: 20px;">
+                            <h4 style="color: var(--accent-blue); margin-bottom: 10px;">Hit Songs:</h4>
+                            <ul style="color: var(--text-secondary); padding-left: 20px;">
+                                ${album.hitSongs.map(song => `<li>${song}</li>`).join('')}
+                            </ul>
+                        </div>
+                        <div style="
+                            background: var(--gradient-primary); padding: 15px; 
+                            border-radius: 10px; margin-bottom: 20px;
+                        ">
+                            <strong>Trivia:</strong> ${album.trivia}
+                        </div>
+                        <button onclick="this.parentElement.parentElement.remove()" style="
+                            background: var(--accent-orange); color: var(--primary-dark); 
+                            border: none; padding: 10px 20px; border-radius: 25px; 
+                            cursor: pointer; font-weight: bold;
+                        ">Tutup</button>
+                    </div>
+                </div>
+            `;
+            document.body.insertAdjacentHTML('beforeend', popup);
+        }
+
+        /**
+         * Memperbesar gambar dalam lightbox
+         */
+        function expandImage(element) {
+            const img = element.querySelector('img');
+            const span = element.querySelector('span');
+            
+            if (img && img.src && !img.src.includes('URL_')) {
+                const lightbox = `
+                    <div style="
+                        position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+                        background: rgba(0,0,0,0.95); z-index: 1000; 
+                        display: flex; align-items: center; justify-content: center;
+                        backdrop-filter: blur(5px);
+                    " onclick="this.remove()">
+                        <div style="max-width: 90%; max-height: 90%; position: relative;">
+                            <img src="${img.src}" alt="${img.alt}" style="
+                                max-width: 100%; max-height: 100%; 
+                                border-radius: 10px; box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+                            ">
+                            <button onclick="this.parentElement.parentElement.remove()" style="
+                                position: absolute; top: -10px; right: -10px; 
+                                background: var(--accent-blue); color: var(--primary-dark); 
+                                border: none; width: 40px; height: 40px; border-radius: 50%; 
+                                cursor: pointer; font-weight: bold; font-size: 18px;
+                            ">×</button>
+                        </div>
+                    </div>
+                `;
+                document.body.insertAdjacentHTML('beforeend', lightbox);
+            } else {
+                alert('💡 Tip: Ganti URL placeholder dengan link foto asli untuk melihat gambar!');
+            }
+        }
+
+        /**
+         * Scroll smooth untuk navigasi
+         */
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+        /**
+         * Update scroll indicator aktif
+         */
+        function updateScrollIndicator() {
+            const sections = ['hero', 'about', 'members', 'albums', 'gallery'];
+            const scrollPosition = window.scrollY + 200;
+
+            sections.forEach(sectionId => {
+                const section = document.getElementById(sectionId);
+                const dot = document.querySelector(`[data-section="${sectionId}"]`);
+                
+                if (section && dot) {
+                    const sectionTop = section.offsetTop;
+                    const sectionBottom = sectionTop + section.offsetHeight;
+                    
+                    if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+                        document.querySelectorAll('.scroll-dot').forEach(d => d.classList.remove('active'));
+                        dot.classList.add('active');
+                    }
+                }
+            });
+        }
+
+        /**
+         * Animasi fade-in saat scroll
+         */
+        function handleScrollAnimations() {
+            const elements = document.querySelectorAll('.fade-in');
+            const windowHeight = window.innerHeight;
+            
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                
+                if (elementTop < windowHeight - 100) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        }
+
+        // ===== EVENT LISTENERS =====
+
+        /**
+         * Inisialisasi saat DOM loaded
+         */
+        document.addEventListener('DOMContentLoaded', function() {
+            // Setup scroll indicators
+            document.querySelectorAll('.scroll-dot').forEach(dot => {
+                dot.addEventListener('click', function() {
+                    const sectionId = this.getAttribute('data-section');
+                    scrollToSection(sectionId);
+                });
+            });
+
+            // Setup fade-in elements
+            document.querySelectorAll('.fade-in').forEach((element, index) => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(30px)';
+                element.style.transition = 'all 0.8s ease';
+                
+                setTimeout(() => {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }, index * 200);
+            });
+
+            // Auto-load images jika URL valid
+            document.querySelectorAll('.member-photo img, .gallery-item img').forEach(img => {
+                img.onload = function() {
+                    if (this.src && !this.src.includes('URL_')) {
+                        this.style.display = 'block';
+                        const span = this.parentElement.querySelector('span');
+                        if (span) span.style.display = 'none';
+                    }
+                };
+            });
+
+            console.log('🎸 Oasis Band Profile berhasil dimuat!');
+            console.log('📝 Cara customize:');
+            console.log('1. Ganti placeholder foto dengan URL foto asli');
+            console.log('2. Edit informasi di membersDatabase & albumsDatabase');
+            console.log('3. Sesuaikan warna di CSS variables');
+            console.log('4. Tambah section baru sesuai kebutuhan');
+        });
+
+        /**
+         * Handle scroll events
+         */
+        window.addEventListener('scroll', function() {
+            updateScrollIndicator();
+            handleScrollAnimations();
+        });
+
+        /**
+         * Handle resize untuk responsivitas
+         */
+        window.addEventListener('resize', function() {
+            // Recalculate positions if needed
+            updateScrollIndicator();
+        });
+
+        // ===== ADDITIONAL FEATURES =====
+
+        /**
+         * Easter egg: Konami code untuk special effect
+         */
+        let konamiCode = [];
+        const konamiSequence = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65]; // ↑↑↓↓←→←→BA
+
+        document.addEventListener('keydown', function(e) {
+            konamiCode.push(e.keyCode);
+            konamiCode = konamiCode.slice(-10);
+            
+            if (konamiCode.join('') === konamiSequence.join('')) {
+                triggerEasterEgg();
+            }
+        });
+
+        function triggerEasterEgg() {
+            document.body.style.animation = 'rainbow 2s infinite';
+            setTimeout(() => {
+                document.body.style.animation = '';
+                alert('🎉 Definitely Maybe you found the easter egg! 🎉');
+            }, 4000);
+        }
+
+        // CSS for easter egg
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes rainbow {
+                0% { filter: hue-rotate(0deg); }
+                25% { filter: hue-rotate(90deg); }
+                50% { filter: hue-rotate(180deg); }
+                75% { filter: hue-rotate(270deg); }
+                100% { filter: hue-rotate(360deg); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
